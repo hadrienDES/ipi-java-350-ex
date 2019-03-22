@@ -19,8 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDate;
 
-@RunWith(SpringRunner.class) // Junit 4
-@ExtendWith(SpringExtension.class) // Junit 5
 @SpringBootTest
 public class EmployeServiceIntegrationTest {
 
@@ -50,12 +48,12 @@ public class EmployeServiceIntegrationTest {
         employeService.embaucheEmploye(nom, prenom, poste, niveauEtude, tempsPartiel);
 
         //Then
-        Employe employe = employeRepository.findByMatricule("T123456");
+        Employe employe = employeRepository.findByMatricule("T12346");
         Assertions.assertNotNull(employe);
         Assertions.assertEquals(nom, employe.getNom());
         Assertions.assertEquals(prenom, employe.getPrenom());
         Assertions.assertEquals(LocalDate.now(), employe.getDateEmbauche());
-        Assertions.assertEquals("T123456", employe.getMatricule());
+        Assertions.assertEquals("T12346", employe.getMatricule());
         Assertions.assertEquals(tempsPartiel, employe.getTempsPartiel());
         Assertions.assertEquals(1825.46, employe.getSalaire().doubleValue());
 
